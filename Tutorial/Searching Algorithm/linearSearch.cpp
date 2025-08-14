@@ -3,9 +3,9 @@ using namespace std;
 
 int linearSearch(vector<int> &a, int n, int x) {
 	for (int i = 0; i < n; i++) {
-		if (a[i] == x) return 1;
+		if (a[i] == x) return i;
 	}
-	return 0;
+	return -1;
 }
 
 int main() {
@@ -21,8 +21,10 @@ int main() {
 
 	int x; cin >> x;
 
-	if (linearSearch(a, n, x)) cout << "Found";
-	else cout << "Not Found";
+	// if (linearSearch(a, n, x)) cout << "Found";
+	// else cout << "Not Found";
+
+	cout << linearSearch(a, n, x);
 
 	return 0;
 }
@@ -31,10 +33,10 @@ int main() {
 /*
 Time Complexity:
 
-Best Case: O(1)
-Worst Case: O(n);
-Average Case: All case/ number of case
-			= (1+2+...+n)/n
-			= (n(n+1)/2)/n
-			= (n+1)/2
+Best Case   :   O(1)
+Worst Case  :   O(n);
+Average Case:  All case/ number of case
+			=  (1+2+...+n)/n
+			=  (n(n+1)/2)/n
+			=  (n+1)/2
 */
