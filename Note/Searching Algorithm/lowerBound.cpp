@@ -1,8 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int upperBoundSearch(vector<int> &a, int n, int x) {
-	int lo = 0 , hi = n - 1, mid = x, ans;
+int lowerBoundSearch(vector<int> &a, int n, int x) {
+	int lo = 0 , hi = n - 1, ans = x;
 
 	sort(a.begin(), a.end());
 
@@ -10,8 +10,8 @@ int upperBoundSearch(vector<int> &a, int n, int x) {
 	cout << endl;
 
 	while (lo <= hi) {
-		mid = (lo + hi) / 2;
-		if (x < a[mid]) {
+		int mid = (lo + hi) / 2;
+		if (x <= a[mid]) {
 			ans = mid;
 			hi = mid - 1;
 		}
@@ -32,7 +32,7 @@ int main() {
 
 	int x; cin >> x;
 
-	cout << upperBoundSearch(a, n, x);
+	cout << lowerBoundSearch(a, n, x);
 
 	return 0;
 }

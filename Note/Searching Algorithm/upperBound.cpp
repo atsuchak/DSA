@@ -1,8 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int binarySearch(vector<int> &a, int n, int x) {
-	int lo = 0 , hi = n - 1, mid = 0;
+int upperBoundSearch(vector<int> &a, int n, int x) {
+	int lo = 0 , hi = n - 1, ans = x;
 
 	sort(a.begin(), a.end());
 
@@ -10,15 +10,15 @@ int binarySearch(vector<int> &a, int n, int x) {
 	cout << endl;
 
 	while (lo <= hi) {
-		mid = (lo + hi) / 2;
-		if (x == a[mid]) return mid;
-		else if (x > a[mid]) lo = mid + 1;
-		else hi = mid - 1;
+		int mid = (lo + hi) / 2;
+		if (x < a[mid]) {
+			ans = mid;
+			hi = mid - 1;
+		}
+		else lo = mid + 1;
 	}
-
-	return -1;
+	return ans;
 }
-
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -32,7 +32,7 @@ int main() {
 
 	int x; cin >> x;
 
-	cout << binarySearch(a, n, x);
+	cout << upperBoundSearch(a, n, x);
 
 	return 0;
 }
