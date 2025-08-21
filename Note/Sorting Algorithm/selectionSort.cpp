@@ -22,20 +22,17 @@ void selectionSort(int arr[], int n) {
     }
 }
 
-void solve() {
-    int n = 5;
-    int arr[5] = {4, 2, 5, 1, 3};
-
-    selectionSort(arr, n);
-    printArray(arr, n);
-}
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
-    solve();
+    int n = 5;
+    int arr[5] = {4, 2, 5, 1, 3};
+
+    selectionSort(arr, n);
+    printArray(arr, n);
 
     return 0;
 }
