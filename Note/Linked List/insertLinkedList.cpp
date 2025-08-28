@@ -56,9 +56,9 @@ int main() {
 	insertAtBegin(7);
 	printLL();
 
-	insertAtBegin(9);
-	insertAtBegin(2);
-	printLL();
+	// insertAtBegin(9);
+	// insertAtBegin(2);
+	// printLL();
 
 	insertAtLast(3);
 	insertAtLast(1);

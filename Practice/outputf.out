@@ -1,3 +1,2 @@
-Binary: -1
-Lower: 3
-Upper: 3
+Before insert: 1 9 5 2 
+After insert: 1 9 5 8 2 3 
