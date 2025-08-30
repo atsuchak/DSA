@@ -17,39 +17,28 @@ struct node {
 
 node* head = nullptr;
 
-void insertMiddle(int t, int val) {
+void insertMiddle(int target, int val) {
+	node* newNode = new node(val);
 
-	if (t < 1) {
-		cout << "Invalid Position" << endl;
-		return;
-	}
-
-	int cnt = 1;
 	node* temp = head;
 
-	while (temp != nullptr && cnt < t - 1) {
+	while (temp->data != target) {
 		temp = temp->next;
-		cnt++;
 	}
 
-	node* newNode = new node(val);
-	node* temp2 = temp->next;
+	newNode->next = temp->next;
 	temp->next = newNode;
-	newNode->next = temp2;
-
 }
 
 void printLL() {
-	if (head == nullptr) {
-		cout << "Linked List is empty" << endl;
-		return;
-	}
-
 	node* temp = head;
 
-	while (temp != nullptr) {
-		cout << temp->data << " ";
-		temp = temp->next;
+	if (head == nullptr) cout << "Linked List is empty";
+	else {
+		while (temp != nullptr) {
+			cout << temp->data << " ";
+			temp = temp->next;
+		}
 	}
 	cout << endl;
 }
@@ -58,17 +47,19 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	head = new node(1);
-	head->next = new node(9);
-	head->next->next = new node(5);
-	head->next->next->next = new node(2);
+	node* n1 = new node(2);
+	node* n2 = new node(7);
+	node* n3 = new node(9);
+	node* n4 = new node(4);
 
-	cout << "Before insert: ";
+	head = n1;
+	n1->next = n2;
+	n2->next = n3;
+	n3->next = n4;
+
 	printLL();
 
-	cout << "After insert: ";
-	insertMiddle(5, 3);
-	insertMiddle(4, 8);
+	insertMiddle(2, 1);
 	printLL();
 
 	return 0;

@@ -17,32 +17,27 @@ struct node {
 
 node* head = nullptr;
 
-void insertEnd(int val) {
+void insertLast(int val) {
 	node* newNode = new node(val);
 
-	if (head == nullptr) {
-		head = newNode;
-		return;
+	if (head == nullptr) head = newNode;
+	else {
+
+		node* temp = head;
+		while (temp->next != nullptr) temp = temp->next;
+		temp->next = newNode;
 	}
 
-	node* temp = head;
-
-	while (temp->next != nullptr) temp = temp->next;
-
-	temp->next = newNode;
 }
 
 void printLL() {
-	if (head == nullptr) {
-		cout << "Linked list is empty" << endl;
-		return;
-	}
-	node* temp = head;
-
-	cout << "Linked List: ";
-	while (temp != nullptr) {
-		cout << temp->data << " ";
-		temp = temp->next;
+	if (head == nullptr) cout << "Linked List is empty";
+	else {
+		node* temp = head;
+		while (temp != nullptr) {
+			cout << temp->data << " ";
+			temp = temp->next;
+		}
 	}
 	cout << endl;
 }
@@ -51,12 +46,18 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	insertEnd(5);
-	insertEnd(2);
+	insertLast(5);
+	insertLast(8);
+	insertLast(8);
+	insertLast(2);
+	insertLast(6);
+
 	printLL();
 
-	insertEnd(1);
-	insertEnd(8);
+	insertLast(5);
+	insertLast(8);
+	insertLast(8);
+
 	printLL();
 
 	return 0;
