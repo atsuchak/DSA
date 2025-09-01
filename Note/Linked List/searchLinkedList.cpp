@@ -17,24 +17,21 @@ struct node {
 
 node* head = nullptr;
 
-void insertMiddle(int target, int val) {
-	node* newNode = new node(val);
-
+bool searchLL(int val) {
 	node* temp = head;
 
-	while (temp->data != target) {
+	while (temp != nullptr) {
+		if (temp->data == val) return 1;
 		temp = temp->next;
 	}
 
-	newNode->next = temp->next;
-	temp->next = newNode;
+	return 0;
 }
 
 void printLL() {
-	node* temp = head;
-
 	if (head == nullptr) cout << "Linked List is empty";
 	else {
+		node* temp = head;
 		while (temp != nullptr) {
 			cout << temp->data << " ";
 			temp = temp->next;
@@ -47,20 +44,18 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	node* n1 = new node(2);
-	node* n2 = new node(7);
-	node* n3 = new node(9);
-	node* n4 = new node(4);
-
-	head = n1;
-	n1->next = n2;
-	n2->next = n3;
-	n3->next = n4;
-
+	head = new node(5);
+	head->next = new node(9);
+	head->next->next = new node(7);
+	head->next->next->next = new node(2);
+	head->next->next->next->next = new node(1);
 	printLL();
 
-	insertMiddle(2, 1);
-	printLL();
+	if (searchLL(7)) cout << "Element found" << endl;
+	else cout << "Element not found" << endl;
+	if (searchLL(4)) cout << "Element found" << endl;
+	else cout << "Element not found" << endl;
+
 
 	return 0;
 }

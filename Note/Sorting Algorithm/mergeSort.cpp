@@ -45,10 +45,9 @@ void mergeSort(vector<int> &a, int st, int end) {
 
 int main() {
 
-	int n; cin >> n;
+	// int n = 7;
 
-	vector<int> a(n);
-	for (int i = 0; i < n; i++) cin >> a[i];
+	vector<int> a{4, 9, 6, 2, 3, 7, 1};
 
 	mergeSort(a, 0, a.size() - 1);
 

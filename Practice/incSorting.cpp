@@ -55,6 +55,30 @@ void countingSort(vector<int> &a, int n) {
     for (int i = 0 ; i < n; i++) a[i] = output[i];
 }
 
+int partition(vector<int> &a, int p, int r) {
+    int x = a[r], i = p - 1;
+
+    for (int j = p; j < r; j++) {
+        if (a[j] <= x) {
+            i++;
+            swap(a[j], a[i]);
+        }
+    }
+
+    i++;
+    swap(a[i], a[r]);
+    return i;
+}
+
+void quickSort(vector<int> &a, int p, int r) {
+    if (p < r) {
+        int q = partition(a, p, r);
+
+        quickSort(a, p, q - 1);
+        quickSort(a, q + 1, r);
+    }
+}
+
 void print(vector<int> &a, int n)
 {
     for (int i = 0; i < n; i++)
@@ -75,7 +99,8 @@ int main()
     // bubble_sort(a, n);
     // selection_sort(a, n);
     // insertion_sort(a, n);
-    countingSort(a, n);
+    // countingSort(a, n);
+    quickSort(a, 0, n - 1);
 
     print(a, n);
 

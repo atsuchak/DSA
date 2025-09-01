@@ -11,25 +11,24 @@ struct node {
 
 	node(int val) {
 		data = val;
-		next = NULL;
+		next = nullptr;
 	}
 };
 
-node* head = NULL;
+node* head = nullptr;
 
-void insertAtBegining (int val) {
-	node* newNode = new node(val);
+void reverseLL(node* temp) {
+	if (temp->next != nullptr) reverseLL(temp->next);
 
-	newNode->next = head;
-	head = newNode;
+	cout << temp->data << " ";
 }
 
 void printLL() {
-	if (head == NULL) cout << "Linked List is empty";
+	if (head == nullptr) cout << "Linked List is empty" << endl;
 	else {
 		node* temp = head;
 
-		while (temp != NULL) {
+		while (temp != nullptr) {
 			cout << temp->data << " ";
 			temp = temp->next;
 		}
@@ -41,14 +40,14 @@ int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	insertAtBegining(7);
-	insertAtBegining(3);
-	insertAtBegining(8);
+	head = new node(5);
+	head->next = new node(9);
+	head->next->next = new node(7);
+	head->next->next->next = new node(2);
+	head->next->next->next->next = new node(1);
 	printLL();
 
-	insertAtBegining(1);
-	insertAtBegining(4);
-	printLL();
+	reverseLL(head);
 
 	return 0;
 }
