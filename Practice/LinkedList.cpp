@@ -37,34 +37,20 @@ void insertAtEnding(int val) {
 }
 
 void insertAtPosition(int target, int val) {
-	// node* newNode = new node(val);
+	node* newNode = new node(val);
 
-	// if (head == NULL) return;
+	if (head == NULL) return;
 
-	// node*temp = head;
-	// while (temp != NULL && temp->data != target) {
-	// 	temp = temp->next;
-	// }
-
-	// if (temp == NULL) cout << "Target not found\n";
-	// else {
-	// 	newNode->next = temp->next;
-	// 	temp->next = newNode;
-	// }
-
-	node* newItem = new node(val);
-
-	node* current = head;
-
-	while (current->data != target)
-	{
-		current = current->next;
+	node*temp = head;
+	while (temp != NULL && temp->data != target) {
+		temp = temp->next;
 	}
 
-	newItem->next = current->next;
-	current->next = newItem;
-
-
+	if (temp == NULL) cout << "Target not found\n";
+	else {
+		newNode->next = temp->next;
+		temp->next = newNode;
+	}
 }
 
 
