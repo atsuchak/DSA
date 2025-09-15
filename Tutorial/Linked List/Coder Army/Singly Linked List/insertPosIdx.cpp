@@ -17,7 +17,7 @@ struct node {
 
 node* head = NULL;
 
-void insertPosVal(int pos, int val) {
+void insertPosIdx(int pos, int val) {
 	node* newNode = new node(val);
 
 	if (pos < 1) {
@@ -33,16 +33,16 @@ void insertPosVal(int pos, int val) {
 	int cnt = 1;
 	node* curr = head;
 
-	while (cnt != pos && curr->next != NULL) {
+	while (cnt < pos - 1 && curr != NULL) {
 		curr = curr->next;
 		cnt++;
 	}
 
-	if (cnt == pos) {
+	if (curr == NULL) {
+		cout << "Position not found" << endl;
+	} else {
 		newNode->next = curr->next;
 		curr->next = newNode;
-	} else {
-		cout << "Position not found" << endl;
 	}
 
 }
@@ -75,7 +75,7 @@ int main() {
 	while (t--) {
 		int pos, x; cin >> pos >> x;
 
-		insertPosVal(pos, x);
+		insertPosIdx(pos, x);
 		printLL();
 	}
 	printLL();
