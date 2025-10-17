@@ -6,10 +6,13 @@ using namespace std;
 #define all(x) (x).begin(), (x).end()
 
 class Stack {
-
 	int arr[100];
+	int top;
 public:
-	int top = -1;
+
+	Stack() {
+		top = -1;
+		
 
 	bool isFull() {
 		return top == 99;
