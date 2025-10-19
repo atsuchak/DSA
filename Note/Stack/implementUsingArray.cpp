@@ -8,11 +8,11 @@ using namespace std;
 class Stack {
 	int arr[100];
 	int top;
-public:
 
+public:
 	Stack() {
 		top = -1;
-		
+	}
 
 	bool isFull() {
 		return top == 99;

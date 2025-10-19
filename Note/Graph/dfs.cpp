@@ -26,27 +26,40 @@ public:
 		ll[v].push_back(u);
 	}
 
-	void bfs(int x) {
+	void dfs(int x) {
 		initVisited();
-		queue<int> q;
+		stack<int> s;
 
-		q.push(x);
+		s.push(x);
 		visited[x] = true;
 
-		while(q.size() > 0) {
-			int u = q.front();
-			q.pop();
+		while(s.size() > 0) {
+			int u = s.top();
+			s.pop();
 
 			cout << u << " ";
 
 			for(int v : ll[u]) {
 				if(!visited[v]) {
 					visited[v] = true;
-					q.push(v);
+					s.push(v);
 				}
 			}
 		}
+
 		cout << endl;
+	}
+
+	void dfs_recur(int u) { 
+		visited[u] = true;
+		cout << u << " ";
+
+		for(int v : ll[u]) {
+			if(!visited[v]) {
+				visited[v] = true;
+				dfs_recur(v);
+			}
+		}
 	}
 
 	void printGraph() {
@@ -86,7 +99,11 @@ int main() {
 
 	g.printGraph(); 
 
-	g.bfs(0);
+	g.dfs(0);
+
+	g.initVisited();
+	cout << "DFS Recursive: ";
+	g.dfs_recur(0);
 
 	return 0;
 }

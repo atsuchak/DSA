@@ -7,18 +7,14 @@ using namespace std;
 
 class Graph {
 	int vertices;
-	list<int> *ll;
+	vector<vector<int> > ll;
 	vector<bool> visited;
 
 public:
 	Graph(int ver) {
 		vertices = ver;
-		ll = new list<int> [ver];
+		ll.resize(ver);
 		visited.assign(ver, false);
-	}
-
-	void initVisited() {
-		visited.assign(vertices, false);
 	}
 
 	void addEdge(int u, int v) {
@@ -27,25 +23,26 @@ public:
 	}
 
 	void bfs(int x) {
-		initVisited();
 		queue<int> q;
 
-		q.push(x);
+		q.push(x); 
 		visited[x] = true;
 
+		cout << "BFS: ";
 		while(q.size() > 0) {
 			int u = q.front();
 			q.pop();
 
 			cout << u << " ";
 
-			for(int v : ll[u]) {
+			for(int v: ll[u]){
 				if(!visited[v]) {
 					visited[v] = true;
 					q.push(v);
 				}
 			}
 		}
+
 		cout << endl;
 	}
 
@@ -82,6 +79,7 @@ int main() {
 	g.addEdge(0, 1);
 	g.addEdge(1, 2);
 	g.addEdge(1, 3);
+	g.addEdge(2, 3);
 	g.addEdge(2, 4);
 
 	g.printGraph(); 
