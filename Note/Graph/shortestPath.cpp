@@ -35,7 +35,6 @@ public:
 
         q.push(x);
         visited[x] = true;
-        // parent[x] = -1;
 
         while(q.size() > 0) {
             int u = q.front();
